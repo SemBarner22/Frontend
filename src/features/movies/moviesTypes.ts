@@ -17,8 +17,9 @@ export type GenresEnglish = keyof typeof GENRES_MAP;
 export type GenresRussian = typeof GENRES_MAP[GenresEnglish];
 
 export type Actor = {
+    id: string;
     name: string;
-    photo: string; // base64 img
+    photo: string;
 }
 
 export type FullMovieInfo = {
@@ -26,17 +27,15 @@ export type FullMovieInfo = {
     title: string;
     description: string;
     release_year: number;
-    poster: string; // base64 img
+    poster: string;
     genre: string;
-    rating: number; // float
-    total_rates_count: number; // int
+    rating: number;
+    total_rates_count: number;
     actors: Actor[];
 }
 
-// Сокращенная информация о фильме
 export type ShortMovieInfo = Omit<FullMovieInfo, 'actors' | 'total_rates_count'>;
 
-// Параметры поиска
 export type SearchMoviesParams = {
     title?: string;
     genre?: GenresEnglish;
@@ -47,16 +46,14 @@ export type SearchMoviesParams = {
     limit?: number;
 }
 
-// Ответ от API на запрос списка фильмов
 export type SearchMoviesResponse = {
     search_result: ShortMovieInfo[];
     total_pages: number;
 }
 
-// Параметры для рейтинга фильма
 export type RateMovieParams = {
     movieId: string;
-    user_rate: number; // значение от 1 до 5
+    user_rate: number;
 }
 
 export type ApiError = {
