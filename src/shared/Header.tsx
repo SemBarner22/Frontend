@@ -24,24 +24,18 @@ const Header: React.FC = () => {
         setIsModalOpen(false);
     };
 
-    const handleLogout = () => {
-        dispatch(logout());
-    };
-
     return (
-        <div>
-            <header className="header">
-                <Link to="/" className="logo">Фильмопоиск</Link>
-                {token ? (
-                    <button onClick={handleLogoutClick} className="logout-button">Выйти</button>
-                ) : (
-                    <button onClick={handleLoginClick} className="login-button">Войти</button>
-                )}
-            </header>
+        <header className="header">
+            <Link to="/" className="logo">Фильмопоиск</Link>
+            {token ? (
+                <button onClick={handleLogoutClick} className="logout-button">Выйти</button>
+            ) : (
+                <button onClick={handleLoginClick} className="login-button">Войти</button>
+            )}
             <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
                 <Auth onClose={handleCloseModal} />
             </Modal>
-        </div>
+        </header>
     );
 };
 
