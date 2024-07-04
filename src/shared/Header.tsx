@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
+import userIcon from '../user.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store';
 import { logout } from '../features/auth/authSlice';
@@ -28,12 +29,15 @@ const Header: React.FC = () => {
         <header className="header">
             <Link to="/" className="logo">Фильмопоиск</Link>
             {token ? (
-                <button onClick={handleLogoutClick} className="logout-button">Выйти</button>
+                <div className="user_icon_div">
+                    <img className="user_icon" src={userIcon} alt="user icon"/>
+                    <button onClick={handleLogoutClick} className="logout-button">Выйти</button>
+                </div>
             ) : (
                 <button onClick={handleLoginClick} className="login-button">Войти</button>
             )}
             <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-                <Auth onClose={handleCloseModal} />
+                <Auth onClose={handleCloseModal}/>
             </Modal>
         </header>
     );

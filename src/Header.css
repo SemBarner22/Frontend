@@ -30,3 +30,12 @@ header {
 .logout-button:hover, .login-button:hover {
     background-color: #c0392b;
 }
+
+.user_icon {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.user_icon_div {
+    display: flex;
+}
